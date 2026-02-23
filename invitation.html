@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNIT 18th Annual Day & Summit 2K26</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #FFFDF5 0%, #F8F6F0 100%);
+            color: #001F3F;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .brochure {
+            max-width: 842px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 1190px;
+            padding: 40px;
+            position: relative;
+            page-break-after: always;
+            background: linear-gradient(to bottom, rgba(212,175,55,0.05) 0%, transparent 50%);
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #D4AF37, #F1C40F, #D4AF37);
+            box-shadow: 0 0 20px rgba(212,175,55,0.5);
+        }
+
+        .page:nth-child(odd)::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -50px;
+            width: 100px;
+            height: 200px;
+            background: radial-gradient(ellipse, rgba(212,175,55,0.1) 0%, transparent 70%);
+            transform: rotate(15deg);
+            z-index: 1;
+        }
+
+        .page:nth-child(even)::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: -50px;
+            width: 100px;
+            height: 200px;
+            background: radial-gradient(ellipse, rgba(212,175,55,0.1) 0%, transparent 70%);
+            transform: rotate(-10deg);
+            z-index: 1;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 700;
+            text-align: center;
+            color: #D4AF37;
+            text-shadow: 2px 2px 4px rgba(0,31,63,0.3);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .venue-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 48px);
+            color: #001F3F;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #D4AF37, #F1C40F);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+        }
+
+        .schedule-section {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border-left: 5px solid #D4AF37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(90deg, rgba(212,175,55,0.05), transparent);
+            border-radius: 10px;
+            border-left: 4px solid #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(212,175,55,0.2);
+        }
+
+        .time {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #D4AF37;
+            min-width: 120px;
+            margin-right: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .event-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #001F3F;
+            margin-bottom: 5px;
+        }
+
+        .event-details {
+            font-size: 14px;
+            color: #34495E;
+            line-height: 1.5;
+        }
+
+        .on-stage {
+            background: linear-gradient(135deg, #001F3F, #003366);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .parallel-events {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(212,175,55,0.05));
+            border: 2px dashed #D4AF37;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+        }
+
+        .parallel-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #D4AF37;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #001F3F, #002855);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #D4AF37;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 60%; right: 20%; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        @media print {
+            .brochure { box-shadow: none; max-width: none; }
+            .page { margin: 0; padding: 20px; box-shadow: none; page-break-after: always; }
+            .page:last-child { page-break-after: avoid; }
+        }
+
+        @media (max-width: 768px) {
+            .page { padding: 20px; min-height: auto; }
+            .main-title { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <!-- Page 1: Front Cover - 18th Annual Day -->
+        <div class="page">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1 class="main-title">18th ANNUAL DAY</h1>
+                <div class="venue-title">LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</div>
+                <div class="date-badge">25th Session<br>25th - 28th February 2026</div>
+            </div>
+
+            <div class="schedule-section">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; color: #D4AF37; text-align: center; margin-bottom: 30px;">
+                    25/02/2026 Schedule
+                </h2>
+                
+                <div class="schedule-item">
+                    <div class="time">9:00 AM</div>
+                    <div>
+                        <div class="event-title">Lighting of lamp and cultural (classical)</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">10:00 - 11:00 AM</div>
+                    <div>
+                        <div class="event-title">Guest Arrival and Speech (Annual Report)</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">11:00 AM - 12:00 PM</div>
+                    <div>
+                        <div class="event-title">Distribution of Awards</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">12:00 PM - 4:30 PM</div>
+                    <div>
+                        <div class="event-title">Cultural</div>
+                        <div class="on-stage">On Stage: Principal Sir + Management + Chief Guest</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: LNIT SUMMIT 2K26 Day 1 -->
+        <div class="page">
+            <h1 class="main-title" style="color: #001F3F;">LNIT SUMMIT 2K26</h1>
+            <div class="venue-title" style="font-size: 24px;">Day 1: 26/02/2026</div>
+
+            <div class="schedule-section">
+                <div class="schedule-item">
+                    <div class="time">9:00 - 10:00 AM</div>
+                    <div><div class="event-title">Check-in</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">10:05 - 10:30 AM</div>
+                    <div><div class="event-title">Inaugural Session</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">10:30 - 11:30 AM</div>
+                    <div><div class="event-title">Guest Speeches and Cultural Performances</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">11:30 AM - 12:30 PM</div>
+                    <div>
+                        <div class="event-title">Keynote Session By Chief Guest</div>
+                        <div class="on-stage">On Stage: Principal Sir + Management + Chief Guest + Convenor (Anji Reddy sir)</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">12:30 - 2:00 PM</div>
+                    <div><div class="event-title">Lunch</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">2:00 - 4:00 PM</div>
+                    <div><div class="event-title">Bootcamp For Hacktraid 2.0</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">4:30 PM</div>
+                    <div><div class="event-title">Disperse</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: LNIT SUMMIT 2K26 Day 2 -->
+        <div class="page">
+            <h1 class="main-title" style="font-size: 60px;">LNIT SUMMIT 2K26</h1>
+            <div class="venue-title" style="font-size: 24px;">Day 2: 27/02/2026</div>
+
+            <div class="schedule-section" style="margin-bottom: 20px;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: #D4AF37; text-align: center; margin-bottom: 25px;">
+                    Main Schedule
+                </h3>
+                
+                <div class="schedule-item">
+                    <div class="time">9:00 - 10:00 AM</div>
+                    <div><div class="event-title">Check-in for other registrations</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">10:00 AM - 12:30 PM</div>
+                    <div>
+                        <div class="event-title">Expo</div>
+                        <div class="event-details">Mech Electronics • Poster Presentation • Rural Innovation Challenge</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">12:30 - 2:00 PM</div>
+                    <div><div class="event-title">LUNCH</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">2:00 - 3:30 PM</div>
+                    <div><div class="event-title">Evaluation</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">3:30 - 4:00 PM</div>
+                    <div><div class="event-title">Result</div></div>
+                </div>
+            </div>
+            <div class="parallel-events">
+                <div class="parallel-title">Parallel Events</div>
+                <div class="schedule-item">
+                    <div class="time">12:00 - 1:30 PM</div>
+                    <div><div class="event-title">Cultural Reporting</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">2:00 - 4:00 PM</div>
+                    <div><div class="event-title">Cultural (On Stage)</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">4:00 - 4:30 PM</div>
+                    <div><div class="event-title">Refreshment Event</div></div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="time">4:30 - 5:00 PM</div>
+                    <div><div class="event-title">Break</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">5:00 - 7:00 PM</div>
+                    <div><div class="event-title">Hacktraid 2.0</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">7:00 - 8:00 PM</div>
+                    <div><div class="event-title">Dinner</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">11:30 PM - 1:30 AM</div>
+                    <div><div class="event-title">Musical Event</div></div>
+                </div>
+            </div>
+        </div>
+        <!-- Page 4: LNIT SUMMIT 2K26 Day 3 -->
+        <div class="page">            
+            <h1 class="main-title" style="font-size: 60px;">LNIT SUMMIT 2K26</h1>
+            <div class="venue-title" style="font-size: 24px;">Day 3: 28/02/2026</div>
+            <div class="schedule-section">
+                <div class="schedule-item">
+                    <div class="time">8:00 - 9:00 AM</div>
+                    <div><div class="event-title">Breakfast</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">9:00 AM - 10:00 AM</div>
+                    <div>
+                        <div class="event-title">Reporting for Spot events, Winners for Other events and Tech Talks</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">10:00 AM - 12:30 PM</div>
+                    <div><div class="event-title">Hacktraid 2.0 Evaluation</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">12:30 - 1:30 PM</div>
+                    <div><div class="event-title">Lunch</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">1:30 - 2:30 PM</div>
+                    <div><div class="event-title">Cultural Performance</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">2:30 - 4:00 PM</div>
+                    <div><div class="event-title">Prize Distribution</div></div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="time">4:00 - 4:30 PM</div>
+                    <div><div class="event-title">Exit Performance</div></div>
+                </div>
+            </div>
+            <div class="Parallel-events">
+                <div class="parallel-title">Parallel Events</div>
+                <div class="schedule-item">
+                    <div class="time">11:00 AM - 12:00 PM</div>
+                    <div><div class="event-title">Emerging Tech Talks</div></div>
+                </div>
+            </div>
+        </div>
+        
